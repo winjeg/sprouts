@@ -6,7 +6,7 @@ import org.springframework.core.type.AnnotationMetadata;
 /**
  * @author gongwenjie09147
  */
-public interface SproutsRegister {
+public interface SproutsRegister extends CommonRegister{
 
     /**
      * register beans to spring context

@@ -16,4 +16,5 @@ import java.lang.annotation.*;
 @AutoConfigurationPackage
 @Import(SproutsBoot.class)
 public @interface UseSprouts {
+    String scanPath() default "";
 }
