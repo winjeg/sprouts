@@ -56,7 +56,7 @@ public class SproutsBoot implements ImportBeanDefinitionRegistrar, CommonRegiste
         MetadataReaderFactory metaReader = new CachingMetadataReaderFactory(resourceLoader);
         Resource[] resources = new Resource[0];
         try {
-            resources = resolver.getResources("classpath*:/com/hellobike/**/*.class");
+            resources = resolver.getResources("classpath*:/to_do/**/*.class");
         } catch (IOException e) {
             log.error("setResourceLoader - getResources error happened when scanning config", e);
         }
