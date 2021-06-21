@@ -11,6 +11,6 @@ public class MyRegister implements SproutsRegister {
 
     @Override
     public void registerBeans(AnnotationMetadata metaData, BeanDefinitionRegistry registry) {
-        registerBeanWithArgs(registry, String.class, "aaa");
+        registerBeanWithArgs(registry, String.class, "hello",  "aaa");
     }
 }

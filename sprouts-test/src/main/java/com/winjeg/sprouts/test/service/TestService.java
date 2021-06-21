@@ -1,5 +1,7 @@
 package com.winjeg.sprouts.test.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,9 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
 
-    private static final String PONG = "pong";
+
+    @Autowired
+    @Qualifier("hello")
+    private String name;
 
     public String pong() {
-        return PONG;
+        return name;
     }
 }
