@@ -16,6 +16,9 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    @Autowired
+    private String name;
+
     @GetMapping("/ping")
     public String pong() {
         return testService.pong();

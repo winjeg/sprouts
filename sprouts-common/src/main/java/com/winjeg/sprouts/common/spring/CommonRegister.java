@@ -21,10 +21,21 @@ public interface CommonRegister {
      * @param clz      class of the bean to be registered
      */
     default void registerBean(BeanDefinitionRegistry registry, Class<?> clz) {
+        String beanName = StringUtils.uncapitalize(clz.getSimpleName());
+        registerBean(registry, clz, beanName);
+    }
+
+    /**
+     * register beans to spring's bean factory
+     *
+     * @param registry the registry of the bean
+     * @param clz      class of the bean to be registered
+     * @param beanName name of the bean
+     */
+    default void registerBean(BeanDefinitionRegistry registry, Class<?> clz, String beanName) {
         RootBeanDefinition beanDefinition = new RootBeanDefinition(clz);
         val args = new ConstructorArgumentValues();
         beanDefinition.setConstructorArgumentValues(args);
-        String beanName = StringUtils.uncapitalize(clz.getSimpleName());
         try {
             // in case that you've already registered this bean
             registry.registerBeanDefinition(beanName, beanDefinition);
@@ -40,13 +51,26 @@ public interface CommonRegister {
      * @param cs       constructor arg values
      */
     default void registerBeanWithArgs(BeanDefinitionRegistry registry, Class<?> clz, Object... cs) {
+        String beanName = StringUtils.uncapitalize(clz.getSimpleName());
+        registerBeanWithArgs(registry, clz, beanName, cs);
+    }
+
+
+    /**
+     * register beans to spring's bean factory
+     *
+     * @param registry the registry of the bean
+     * @param clz      class of the bean to be registered
+     * @param cs       constructor arg values
+     * @param beanName name of then bean
+     */
+    default void registerBeanWithArgs(BeanDefinitionRegistry registry, Class<?> clz, String beanName, Object... cs) {
         RootBeanDefinition beanDefinition = new RootBeanDefinition(clz);
         val args = new ConstructorArgumentValues();
         for (val a : cs) {
             args.addGenericArgumentValue(a);
         }
         beanDefinition.setConstructorArgumentValues(args);
-        String beanName = StringUtils.uncapitalize(clz.getSimpleName());
         try {
             // in case that you've already registered this bean
             registry.registerBeanDefinition(beanName, beanDefinition);
